@@ -1,1 +1,55 @@
 <p>order-new works!</p>
+  <!-- Modal -->
+<div class="contenedor-principalit">
+  <div class="espacio-trabajo">
+    <div class="butooons">
+      <button type="submit" id="product-permisstio" class="btn btn-primary" (click)="fetchProducts()">productos permitidos</button>
+      <button class="btn btn-primary" (click)="toggleProductForm()">Registrar Producto</button>
+    </div>
+
+    <div class="detail-products">
+
+    </div>
+
+    <div class="list-product">
+      <ul>
+        <li *ngFor="let product of products">
+          {{ product.name }} - {{ product.price }}
+        </li>
+      </ul>
+    </div>
+    <button type="submit" id="new-order" class="btn btn-success">Generar Orden</button>
+  </div>
+
+  <!-- Agregamos *ngIf para ocultar/mostrar el formulario -->
+  <div class="register-productss" *ngIf="showForm">
+      <form [formGroup]="registerForm" (ngSubmit)="registerproduct()">
+      <h4>Registre un nuevo producto</h4>
+      <div class="area-work">
+        <div class="formGroup" id="div-product">
+          <label for="product">Producto</label>
+          <input type="text" id="product" class="form-control">
+          <div *ngIf="registerForm.controls['product'].invalid && registerForm.controls['product'].touched" class="text-danger">
+            El nombre es obligatorio y debe tener al menos 3 caracteres.
+          </div>
+        </div>
+        <div class="formGroup">
+          <label for="stock">stock</label>
+          <input type="text" id="stock" class="form-control">
+        </div>
+        <div class="formGroup">
+          <label for="price">price</label>
+          <input type="text" id="price" class="form-control">
+        </div>
+        <div class="formGroup btn-regis">
+          <button type="submit" id="register" class="btn btn-primary">Registrar</button>
+        </div>
+      </div>
+    </form>
+    </div>
+
+  <div class="register-productss">
+
+  </div>
+
+</div>

@@ -31,7 +31,7 @@ export class LoginComponent {
         .subscribe({
           next: (response) => {
             console.log('Inicio de sesión exitoso:', response);
-            ;this.router.navigate(['/home']);
+            ;this.router.navigate(['/home-private']);
           },
           error: (error) => console.error('Error en el inicio de sesión:', error)
           

@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Product::all());
     }
 
     /**
@@ -28,7 +28,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'stock' => 'required|numeric|',
+            'price' => 'required|regex:/^\d+(\.\d{1,5})?$/'
+        ]);
+
+        $product = Product::create([
+            'name' => $request->name,
+            'stock' => $request->stock,
+            'price' => $request->price
+        ]);
+
+        return response()->json([
+            'message' => 'Producto registrado con exito..!',
+            'Product' => $product
+        ], 201);
     }
 
     /**
