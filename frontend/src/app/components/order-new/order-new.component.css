@@ -76,22 +76,40 @@ h4{
     gap: 10px; /* Espacio entre los div */
     border-radius: 10px;
 }
+.cont-divs{
+    display: flex;
+    flex-direction: row;
+}
 .select-usuario{
     height: 200px;
     width: 190px;
     background-color: rgb(190, 190, 196);
     border-radius: 10px;
     margin-right: 10px;
-    margin-top: 130px;
+    margin-top: 7px;
 }
 .select-product{
     height: 200px;
     width: 190px;
     background-color: rgb(190, 190, 196);
     border-radius: 10px;
-    margin-top: 130px;
+    margin-top: 7px;
 }
-.cont-divs{
-    display: flex;
-    flex-direction: row;
+/*UBicacion de peticon users*/
+.listt{
+    margin-top: -230px;
+    margin-left: -230px;
+    max-height: 150px; /* Ajusta según tu diseño */
+    overflow-y: auto; /* Habilita scroll vertical */
+}
+.listt-product{
+    margin-left: 170px;
+    margin-top: -150px;
+    max-height: 150px; /* Ajusta según tu diseño */
+    overflow-y: auto; /* Habilita scroll vertical */
+}
+/*Mensajes sobre diferentes peticiones*/
+#message-usuario{
+    color: blue;
+    text-align: left;
 }

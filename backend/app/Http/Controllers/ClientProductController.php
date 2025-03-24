@@ -12,7 +12,7 @@ class ClientProductController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(ClientProduct::all());
     }
 
     /**
@@ -28,7 +28,25 @@ class ClientProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user_id = $request->user_id;
+        $product_ids = $request->product_id; // Aquí llega como array
+
+        if (is_array($product_ids)) {
+            foreach ($product_ids as $product_id) {
+                $clientproduct = ClientProduct::firstOrCreate([
+                    'user_id' => $user_id,
+                    'product_id' => $product_id
+                ]);
+            }
+        } else {
+            $clientproduct = ClientProduct::create([
+                'user_id' => $user_id,
+                'product_id' => $product_ids
+            ]);
+        }
+
+        return response()->json(['message' => 'Registro exitoso', 'client_product' => $clientproduct ], 201);
+
     }
 
     /**

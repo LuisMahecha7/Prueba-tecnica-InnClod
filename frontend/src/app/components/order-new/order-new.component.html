@@ -5,7 +5,7 @@
     <div class="butooons">
       <button type="submit" id="product-permisstio" class="btn btn-primary" (click)="fetchProducts()">productos permitidos</button>
       <button class="btn btn-primary" id="regis-prod" (click)="toggleProductForm()">Registrar Producto</button>
-      <button class="btn btn-primary" id="permisos-prod" (click)="toggleProductPermisions()">Permisos-Productos</button>
+      <button class="btn btn-primary" id="permisos-prod" (click)="toggleProductPermisions(); fetchUsers(); fetchProductsPermisions()">Permisos-Productos</button>
     </div>
 
     <div class="detail-products">
@@ -57,12 +57,31 @@
   </div>
 
   <div class="permisos-productss" *ngIf="showForm2">
+    <h4>Restriccion de productos</h4>
+    <span id="message-usuario">Seleccione el usuario y los productos <br>que quiere restringirle.</span>
     <div class="cont-divs">
       <div class="select-usuario"></div><!--Div fondo oscuro, para mostrar usuarios-->
       <div class="select-product"></div><!--Div fondo oscuro, para mostrar productos-->
     </div>
     <div class="guardar-cmbios">
-      <button type="submit" id="guardar-cambios" class="btn btn-primary">Guardar Cambios</button>
+      <button type="submit" id="guardar-cambios" class="btn btn-primary" (click)="saveChanges()">Guardar Cambios</button>
+    </div>
+    <div class="listt">
+      <ul>
+        <li *ngFor="let user of users">
+          <input type="checkbox" (change)="userSelection(user, $event)"
+          [checked]="selectedUser?.id === user.id">
+          {{ user.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="listt-product">
+      <ul>
+        <li *ngFor="let productt of products2">
+          <input type="checkbox" (change)="toggleProductSelectionPermsions(productt, $event)">
+          {{ productt.name }}
+        </li>
+      </ul>
     </div>
   </div>
 
