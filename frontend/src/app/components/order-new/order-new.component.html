@@ -4,7 +4,8 @@
   <div class="espacio-trabajo">
     <div class="butooons">
       <button type="submit" id="product-permisstio" class="btn btn-primary" (click)="fetchProducts()">productos permitidos</button>
-      <button class="btn btn-primary" (click)="toggleProductForm()">Registrar Producto</button>
+      <button class="btn btn-primary" id="regis-prod" (click)="toggleProductForm()">Registrar Producto</button>
+      <button class="btn btn-primary" id="permisos-prod" (click)="toggleProductPermisions()">Permisos-Productos</button>
     </div>
 
     <div class="detail-products">
@@ -14,6 +15,7 @@
     <div class="list-product">
       <ul>
         <li *ngFor="let product of products">
+          <input type="checkbox" (change)="toggleProductSelection(product, $event)">
           {{ product.name }} - {{ product.price }}
         </li>
       </ul>
@@ -23,33 +25,45 @@
 
   <!-- Agregamos *ngIf para ocultar/mostrar el formulario -->
   <div class="register-productss" *ngIf="showForm">
+    <h4>Registre un nuevo producto</h4>
+    <div class="area-work">
       <form [formGroup]="registerForm" (ngSubmit)="registerproduct()">
-      <h4>Registre un nuevo producto</h4>
-      <div class="area-work">
         <div class="formGroup" id="div-product">
-          <label for="product">Producto</label>
-          <input type="text" id="product" class="form-control">
-          <div *ngIf="registerForm.controls['product'].invalid && registerForm.controls['product'].touched" class="text-danger">
-            El nombre es obligatorio y debe tener al menos 3 caracteres.
+          <label for="name">Producto</label>
+          <input type="text" id="name" formControlName="name" class="form-control">
+          <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched" class="text-danger">
+            Ingrese un producto valido..
           </div>
         </div>
         <div class="formGroup">
           <label for="stock">stock</label>
-          <input type="text" id="stock" class="form-control">
+          <input type="text" id="stock" formControlName="stock" class="form-control">
+          <div *ngIf="registerForm.controls['stock'].invalid && registerForm.controls['stock'].touched" class="text-danger">
+            Ingrese stock del producto..
+          </div>
         </div>
         <div class="formGroup">
           <label for="price">price</label>
-          <input type="text" id="price" class="form-control">
+          <input type="text" id="price" formControlName="price" class="form-control">
+          <div *ngIf="registerForm.controls['price'].invalid && registerForm.controls['price'].touched" class="text-danger">
+            Ingrese el precio del producto..
+          </div>
         </div>
         <div class="formGroup btn-regis">
-          <button type="submit" id="register" class="btn btn-primary">Registrar</button>
+          <button type="submit" id="register" class="btn btn-primary" [disabled]="registerForm.invalid">Registrar</button>
         </div>
-      </div>
-    </form>
+      </form>
     </div>
+  </div>
 
-  <div class="register-productss">
-
+  <div class="permisos-productss" *ngIf="showForm2">
+    <div class="cont-divs">
+      <div class="select-usuario"></div><!--Div fondo oscuro, para mostrar usuarios-->
+      <div class="select-product"></div><!--Div fondo oscuro, para mostrar productos-->
+    </div>
+    <div class="guardar-cmbios">
+      <button type="submit" id="guardar-cambios" class="btn btn-primary">Guardar Cambios</button>
+    </div>
   </div>
 
 </div>

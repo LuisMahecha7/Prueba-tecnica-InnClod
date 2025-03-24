@@ -2,27 +2,33 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
   gap: 10px; /* Espacio entre áreas */
-  margin-right: 5px;
+  margin-right: 10px;
 }
 .espacio-trabajo{
     background-color: rgb(230, 230, 227);
     width: 1000px;
     height: 400px;
-    margin-left: 70px;
-    margin-top: 120px;
+    margin-left: 60px;
+    margin-top: 150px;
     border-radius: 10px;
 }
 #new-order{
-    margin-top: 220px;
+    margin-top: 140px;
     margin-left: 855px;
 }
 .butooons{
-    margin-left: 640px;
+    margin-left: 475px;
     margin-top: 10px;
-    gap: 10px;
+}
+#regis-prod{
+    margin: 5px;
+    font-size: 15px;
 }
 #product-permisstio{
-    margin-right: 10px;
+    font-size: 15px;
+}
+#permisos-prod{
+    font-size: 15px;
 }
 .detail-products{
     width: 350px;
@@ -35,10 +41,12 @@
 .list-product{
     margin-left: 630px;
     margin-top: -150px;
+    max-height: 150px; /* Ajusta según tu diseño */
+    overflow-y: auto; /* Habilita scroll vertical */
 }
 .register-productss{
     background-color: rgb(230, 230, 227);
-    margin-top: 120px;
+    margin-top: 150px;
     border-radius: 10px;
 }
 .register-productss .formGroup{
@@ -57,4 +65,33 @@ h4{
     text-align: center;
     margin-top: 40px;
     font-size: 20px;
+}
+/*Estilos segundo formulario*/
+.permisos-productss{
+    margin-top: 150px;
+    align-items: center;/*Centra elementos horizontalemnte*/
+    background-color: rgb(230, 230, 227);
+    display: flex;
+    flex-direction: column; /*'row' pone en fila ambos div, 'column'->Organiza en columna los elementos */
+    gap: 10px; /* Espacio entre los div */
+    border-radius: 10px;
+}
+.select-usuario{
+    height: 200px;
+    width: 190px;
+    background-color: rgb(190, 190, 196);
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-top: 130px;
+}
+.select-product{
+    height: 200px;
+    width: 190px;
+    background-color: rgb(190, 190, 196);
+    border-radius: 10px;
+    margin-top: 130px;
+}
+.cont-divs{
+    display: flex;
+    flex-direction: row;
 }

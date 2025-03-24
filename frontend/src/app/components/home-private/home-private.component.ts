@@ -13,8 +13,4 @@ export class HomePrivateComponent {
   goToNewOrder() {
     this.router.navigate(['/order-new']);
   }
-
-  goToNewProduct() {
-    this.router.navigate(['/create-product']);
-  }
 }
