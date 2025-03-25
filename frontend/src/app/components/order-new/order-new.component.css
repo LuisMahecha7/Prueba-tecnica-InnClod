@@ -5,44 +5,98 @@
   margin-right: 10px;
 }
 .espacio-trabajo{
+    margin-top: 150px;
     background-color: rgb(230, 230, 227);
     width: 1000px;
     height: 400px;
     margin-left: 60px;
-    margin-top: 150px;
     border-radius: 10px;
 }
+/*Estilos generar nueva orden*/
+.input-user-name-order{
+    border-radius: 5px;
+    margin-left: 20px;
+    width: 350px;
+    height: 40px;
+    background-color: rgb(186, 231, 235);
+    padding-top: 7px;
+    padding-left: 30px;
+}
+.new-ordenn{
+  display: flex;
+  flex-direction: row;
+}
+#selecction-userord{
+    font-size: 13px;
+    margin-left: 80px;
+    margin-right: 500px;
+}
 #new-order{
-    margin-top: 140px;
-    margin-left: 855px;
+    font-size: 13px;
 }
 .butooons{
-    margin-left: 475px;
-    margin-top: 10px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;/*todos los elementos en una fila*/
+    margin-bottom: 50px;
+}
+.title-user-other{
+    display: flex;
+    flex-direction: row;
+    gap: 270px;
 }
 #regis-prod{
-    margin: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     font-size: 15px;
 }
 #product-permisstio{
     font-size: 15px;
+    margin-left: 100px;
 }
 #permisos-prod{
     font-size: 15px;
 }
+.div-orders-fondo {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+}
+.user-selected-order{
+    width: 200px;
+    height: 190px;
+    background-color: rgb(190, 190, 196);
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 300px;
+    padding-top: 10px;
+}
 .detail-products{
-    width: 350px;
-    height: 150px;
+    height: 190px;
+    width: 450px;
     border-radius: 10px;
     background-color: rgb(190, 190, 196);
-    margin-left: 630px;
-    margin-top: 10px;
+    margin-top: 30px;
+    margin-left: 0px;
 }
 .list-product{
-    margin-left: 630px;
-    margin-top: -150px;
-    max-height: 150px; /* Ajusta según tu diseño */
+    margin-left: 530px;
+    margin-top: -210px;
+    max-height: 160px; /* Ajusta según tu diseño */
     overflow-y: auto; /* Habilita scroll vertical */
+    align-items: center;
+    width: 450px;
+}
+.list-users-Norder{
+    max-height: 160px; /* Ajusta según tu diseño */
+    overflow-y: auto; /* Habilita scroll vertical */
+    margin-left: -5px;
+}
+#message-user-order-new{
+    color: rgb(230, 66, 140);
+    margin-left: 5px;
+    margin-bottom: -30px;
 }
 .register-productss{
     background-color: rgb(230, 230, 227);
@@ -61,7 +115,7 @@
     margin-top: 50px;
 }
 h4{
-    color: rgb(149, 33, 226);
+    color: rgb(8, 126, 134);
     text-align: center;
     margin-top: 40px;
     font-size: 20px;
@@ -110,6 +164,6 @@ h4{
 }
 /*Mensajes sobre diferentes peticiones*/
 #message-usuario{
-    color: blue;
+    color: rgb(223, 41, 126);
     text-align: left;
 }

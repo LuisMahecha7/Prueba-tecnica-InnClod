@@ -1,76 +1,94 @@
-<p>order-new works!</p>
+<p>Vista Principal, con todos los permisos para usuarios con rol: 'admin'.</p>
   <!-- Modal -->
 <div class="contenedor-principalit">
   <div class="espacio-trabajo">
     <div class="butooons">
+      <div class="input-user-name-order">Orden para el usuario : {{ usuarioName.name }}</div>
       <button type="submit" id="product-permisstio" class="btn btn-primary" (click)="fetchProducts()">productos permitidos</button>
       <button class="btn btn-primary" id="regis-prod" (click)="toggleProductForm()">Registrar Producto</button>
       <button class="btn btn-primary" id="permisos-prod" (click)="toggleProductPermisions(); fetchUsers(); fetchProductsPermisions()">Permisos-Productos</button>
     </div>
-
-    <div class="detail-products">
-
+    <div class="title-user-other">
+      <span id="message-user-order-new">Generar una orden, para otro usuario.</span>
+      <span id="message-user-order-new">Seleccione los productos y la cantidad a incluir, en la orden.</span>
     </div>
-
+    <div class="div-orders-fondo">
+      <div class="user-selected-order"><!--Div fondo oscuro, para mostrar usuarios para orden-->
+        <div class="list-users-Norder"><!--lista de usuarios iterados.-->
+          <ul>
+            <li *ngFor="let usr of users2">
+              <input type="checkbox" (change)="togUserSelectionOrder(usr, $event)" [checked]="selectedUser2?.id == usr.id">
+              {{ usr.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="detail-products"></div><!--Div fondo oscuro, para mostrar productos-->
+    </div>
+    <div class="new-ordenn">
+      <button type="submit" id="selecction-userord" class="btn btn-secondary" (click)="fetchUsersOrder()">Seleccionar</button>
+      <button type="submit" id="new-order" class="btn btn-success">Generar Orden</button>
+    </div>
     <div class="list-product">
       <ul>
-        <li *ngFor="let product of products">
+        <li *ngFor="let product of products" style="display: flex; align-items: center; gap: 15px; padding: 5px;">
           <input type="checkbox" (change)="toggleProductSelection(product, $event)">
-          {{ product.name }} - {{ product.price }}
+          <p style="margin: 0;">
+            {{ product.name }} <strong style="color: blue;"> -- Stock :</strong> {{ product.stock }}
+            <strong style="color: purple;"> Cantidad :</strong>
+          </p>
+          <input style="border-radius: 10px; width: 55px; height: 25px;" type="number" [(ngModel)]="product.quantity" [max]="product.stock" min="1" (change)="validateQuantity(product)">
         </li>
       </ul>
     </div>
-    <button type="submit" id="new-order" class="btn btn-success">Generar Orden</button>
   </div>
-
   <!-- Agregamos *ngIf para ocultar/mostrar el formulario -->
   <div class="register-productss" *ngIf="showForm">
-    <h4>Registre un nuevo producto</h4>
+    <h4>Registre un nuevo producto.</h4>
     <div class="area-work">
       <form [formGroup]="registerForm" (ngSubmit)="registerproduct()">
         <div class="formGroup" id="div-product">
-          <label for="name">Producto</label>
+          <label for="name">Producto.</label>
           <input type="text" id="name" formControlName="name" class="form-control">
           <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched" class="text-danger">
             Ingrese un producto valido..
           </div>
         </div>
         <div class="formGroup">
-          <label for="stock">stock</label>
+          <label for="stock">stock.</label>
           <input type="text" id="stock" formControlName="stock" class="form-control">
           <div *ngIf="registerForm.controls['stock'].invalid && registerForm.controls['stock'].touched" class="text-danger">
             Ingrese stock del producto..
           </div>
         </div>
         <div class="formGroup">
-          <label for="price">price</label>
+          <label for="price">price.</label>
           <input type="text" id="price" formControlName="price" class="form-control">
           <div *ngIf="registerForm.controls['price'].invalid && registerForm.controls['price'].touched" class="text-danger">
             Ingrese el precio del producto..
           </div>
         </div>
         <div class="formGroup btn-regis">
-          <button type="submit" id="register" class="btn btn-primary" [disabled]="registerForm.invalid">Registrar</button>
+          <button type="submit" id="register" class="btn btn-primary" [disabled]="registerForm.invalid">Registrar.</button>
         </div>
       </form>
     </div>
   </div>
-
+  <!--Restriccion de productos s usuario especfico-->
   <div class="permisos-productss" *ngIf="showForm2">
-    <h4>Restriccion de productos</h4>
+    <h4>Restricción de productos.</h4>
     <span id="message-usuario">Seleccione el usuario y los productos <br>que quiere restringirle.</span>
     <div class="cont-divs">
       <div class="select-usuario"></div><!--Div fondo oscuro, para mostrar usuarios-->
       <div class="select-product"></div><!--Div fondo oscuro, para mostrar productos-->
     </div>
     <div class="guardar-cmbios">
-      <button type="submit" id="guardar-cambios" class="btn btn-primary" (click)="saveChanges()">Guardar Cambios</button>
+      <button type="submit" id="guardar-cambios" class="btn btn-primary" (click)="saveChanges()">Guardar Cambios.</button>
     </div>
     <div class="listt">
       <ul>
         <li *ngFor="let user of users">
-          <input type="checkbox" (change)="userSelection(user, $event)"
-          [checked]="selectedUser?.id === user.id">
+          <input type="checkbox" (change)="userSelection(user, $event)" [checked]="selectedUser?.id === user.id">
           {{ user.name }}
         </li>
       </ul>
@@ -84,5 +102,4 @@
       </ul>
     </div>
   </div>
-
 </div>

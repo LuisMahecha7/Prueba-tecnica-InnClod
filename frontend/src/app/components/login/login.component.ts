@@ -29,9 +29,12 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.http.post('http://127.0.0.1:8000/api/login', this.loginForm.value)
         .subscribe({
-          next: (response) => {
+          next: (response: any) => {
             console.log('Inicio de sesión exitoso:', response);
-            ;this.router.navigate(['/home-private']);
+            this.router.navigate(['/home-private']);
+            localStorage.setItem('usuario', JSON.stringify(response.user));//GUardar usuario en localstorage
+            console.log('this response', response);
+            console.log('this responseee', response.user);
           },
           error: (error) => console.error('Error en el inicio de sesión:', error)
           
