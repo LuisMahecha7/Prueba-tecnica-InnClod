@@ -26,10 +26,8 @@
         <span id="message-user-order-new" style="margin-right: 245px;">Generar una orden, para otro usuario.</span>
         <span id="message-user-order-new">Seleccione los productos y la cantidad a incluir, en la orden.</span>
       </div>
-
         <div class="fondoOscuro"></div><!--Div para mostrar usuarios para orden-->
         <div class="fondoOscur" style="height: 190px; width: 405px;"></div><!--Div fondo oscuro, para mostrar productos-->
-
       <div class="">
         <button type="submit" id="selecction-userord" class="btn btn-success" (click)="fetchUsersOrder()">Seleccionar</button>
         <button type="submit" id="new-order" class="btn btn-success" (click)="saveOrder()">Generar Orden</button>
@@ -51,101 +49,104 @@
             <input type="number" style="border-radius: 10px;" [(ngModel)]="productsGenerateOrden.quantity" [max]="productsGenerateOrden.stock" min="1" (change)="validateQuantity(productsGenerateOrden)">
           </li>
         </ul>
+      </div>
+    </div>
+    <div class="tainer2B" style="gap: 3px;">
+      <!-- ngIf para ocultar/mostrar el formulario -->
+      <div class="register-productss" *ngIf="showForm">
+        <h4>Registre un nuevo producto.</h4>
+        <div class="area-work">
+          <form [formGroup]="registerForm" (ngSubmit)="registerproduct()">
+            <div class="formGroup" id="div-product">
+              <label for="name">Producto.</label>
+              <input type="text" id="name" formControlName="name" class="form-control">
+              <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched" class="text-danger">
+                Ingrese un producto valido..
+              </div>
+            </div>
+            <div class="formGroup">
+              <label for="stock">stock.</label>
+              <input type="text" id="stock" formControlName="stock" class="form-control">
+              <div *ngIf="registerForm.controls['stock'].invalid && registerForm.controls['stock'].touched" class="text-danger">
+                Ingrese stock del producto..
+              </div>
+            </div>
+            <div class="formGroup">
+              <label for="price">price.</label>
+              <input type="text" id="price" formControlName="price" class="form-control">
+              <div *ngIf="registerForm.controls['price'].invalid && registerForm.controls['price'].touched" class="text-danger">
+                Ingrese el precio del producto..
+              </div>
+            </div>
+            <div class="formGroup btn-regis">
+              <button type="submit" id="register" class="btn btn-primary" [disabled]="registerForm.invalid">Registrar.</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--Restriccion de productos a usuario-->
+      <div class="permisos-productss" *ngIf="showForm2">
+        <h4>Restricción de productos.</h4>
+        <span id="message-usuario" style="text-align: center;">Seleccione el usuario y los productos<br>que quiere restringirle.</span>
+        <div class="cont-divs">
+          <div class="select-usuario"></div><!--Div fondo oscuro, para mostrar usuarios-->
+          <div class="select-product"></div><!--Div fondo oscuro, para mostrar productos-->
+        </div>
+        <div class="guardar-cmbios">
+          <button type="submit" id="guardar-cambios" style="font-size: 14px; margin-bottom: -60px;" class="btn btn-primary" (click)="saveChanges()">Guardar Cambios.</button>
+        </div>
+        <div class="listt">
+          <ul style="list-style: none;">
+            <li *ngFor="let user of users">
+              <input type="checkbox" (change)="userSelection(user, $event)" [checked]="selectedUser?.id === user.id">
+              {{ user.name }}
+            </li>
+          </ul>
+        </div>
+        <div class="listt-product">
+          <ul style="list-style: none;">
+            <li *ngFor="let productsSelectedP of GetproductsPermissions">
+              <input type="checkbox" (change)="toggleProductSelectionPermsions(productsSelectedP, $event)">
+              {{ productsSelectedP.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- ngIf para ocultar/mostrar el formulario Registro Usuarios-->
+      <div class="registr-userss" *ngIf="showForm3" style="margin-right: 7px; background-color: rgb(230, 230, 227); border-radius: 10px;">
+        <h4>Registre un nuevo usuario.</h4>
+        <div class="area-wor">
+          <form style="padding: 10px;" [formGroup]="userFormValidate" (ngSubmit)="onSubmitUsr()">
+            <div class="formGroup" id="">
+              <label style="margin-top: 5px;" for="name">Nombre.</label>
+              <input type="text" id="name" formControlName="name" class="form-control">
+              <div *ngIf="userFormValidate.controls['name'].invalid && userFormValidate.controls['name'].touched" class="text-danger">
+                Ingrese su nombre..
+              </div>
+            </div>
+            <div class="formGroup">
+              <label style="margin-top: 12px;" for="email" class="form-label">Correo Electrónico</label>
+              <input type="email" id="email" class="form-control" formControlName="email">
+              <div *ngIf="userFormValidate.controls['email'].invalid && userFormValidate.controls['email'].touched" class="text-danger">
+                Ingresa un correo válido.
+              </div>
+            </div>
+            <div class="formGroup">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" id="password" class="form-control" formControlName="password">
+              <div *ngIf="userFormValidate.controls['password'].invalid && userFormValidate.controls['password'].touched" class="text-danger">
+                Ingrese una contraseña..
+              </div>
+            </div>
+            <div class="formGroup">
+              <button style="margin-top: 20px; margin-left: 90px;" type="submit" id="" class="btn btn-primary" [disabled]="userFormValidate.invalid">Registrar.</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="tainer2B">
-    <!-- ngIf para ocultar/mostrar el formulario -->
-    <div class="register-productss" *ngIf="showForm">
-      <h4>Registre un nuevo producto.</h4>
-      <div class="area-work">
-        <form [formGroup]="registerForm" (ngSubmit)="registerproduct()">
-          <div class="formGroup" id="div-product">
-            <label for="name">Producto.</label>
-            <input type="text" id="name" formControlName="name" class="form-control">
-            <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched" class="text-danger">
-              Ingrese un producto valido..
-            </div>
-          </div>
-          <div class="formGroup">
-            <label for="stock">stock.</label>
-            <input type="text" id="stock" formControlName="stock" class="form-control">
-            <div *ngIf="registerForm.controls['stock'].invalid && registerForm.controls['stock'].touched" class="text-danger">
-              Ingrese stock del producto..
-            </div>
-          </div>
-          <div class="formGroup">
-            <label for="price">price.</label>
-            <input type="text" id="price" formControlName="price" class="form-control">
-            <div *ngIf="registerForm.controls['price'].invalid && registerForm.controls['price'].touched" class="text-danger">
-              Ingrese el precio del producto..
-            </div>
-          </div>
-          <div class="formGroup btn-regis">
-            <button type="submit" id="register" class="btn btn-primary" [disabled]="registerForm.invalid">Registrar.</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <!--Restriccion de productos a usuario-->
-    <div class="permisos-productss" *ngIf="showForm2">
-      <h4>Restricción de productos.</h4>
-      <span id="message-usuario">Seleccione el usuario y los productos<br>que quiere restringirle.</span>
-      <div class="cont-divs">
-        <div class="select-usuario"></div><!--Div fondo oscuro, para mostrar usuarios-->
-        <div class="select-product"></div><!--Div fondo oscuro, para mostrar productos-->
-      </div>
-      <div class="guardar-cmbios">
-        <button type="submit" id="guardar-cambios" class="btn btn-primary" (click)="saveChanges()">Guardar Cambios.</button>
-      </div>
-      <div class="listt">
-        <ul>
-          <li *ngFor="let user of users">
-            <input type="checkbox" (change)="userSelection(user, $event)" [checked]="selectedUser?.id === user.id">
-            {{ user.name }}
-          </li>
-        </ul>
-      </div>
-      <div class="listt-product">
-        <ul>
-          <li *ngFor="let productsSelectedP of GetproductsPermissions">
-            <input type="checkbox" (change)="toggleProductSelectionPermsions(productsSelectedP, $event)">
-            {{ productsSelectedP.name }}
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- ngIf para ocultar/mostrar el formulario Registro Usuarios -->
-    <div class="registr-userss" *ngIf="showForm3" style="background-color: rgb(230, 230, 227);">
-      <h4>Registre un nuevo usuario.</h4>
-      <div class="area-wor">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmitUsr()">
-          <div class="formGroup" id="">
-            <label for="nombre">Name.</label>
-            <input type="text" id="nombre" formControlName="nombre" class="form-control">
-            <div *ngIf="registerForm.controls['nombre'].invalid && registerForm.controls['nombre'].touched" class="text-danger">
-              Ingrese su nombre..
-            </div>
-          </div>
-          <div class="formGroup">
-            <label for="correo">Email.</label>
-            <input type="email" id="correo" formControlName="correo" class="form-control">
-            <div *ngIf="registerForm.controls['correo'].invalid && registerForm.controls['correo'].touched" class="text-danger">
-              Ingrese un email..
-            </div>
-          </div>
-          <div class="formGroup">
-            <label for="password">Password.</label>
-            <input type="password" id="password" formControlName="password" class="form-control">
-            <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="text-danger">
-              Ingrese una contraseña..
-            </div>
-          </div>
-          <div class="formGroup">
-            <button type="submit" id="" class="btn btn-primary" [disabled]="registerForm.invalid">Registrar.</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  </div>
+</div>
+<div class="tainer3" style="border-radius: 10px; background-color: rgb(206, 206, 204); height: 160px; width: 990px; margin-left: 10px">
+  <h4>Ordenes realizadas.</h4>
 </div>

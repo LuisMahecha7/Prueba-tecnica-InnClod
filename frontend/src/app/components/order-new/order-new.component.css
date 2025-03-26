@@ -1,6 +1,6 @@
 .tainer-general{
     display: grid;
-    grid-template-rows: auto auto;/* Dos filas de tamaño automático */
+    grid-template-rows: auto auto auto;/* Dos filas de tamaño automático */
 }
 /*New style*/
 .tainer2{
@@ -12,6 +12,12 @@
     display: grid; /* Esto debe ir antes */
     grid-template-rows: auto; /* 1 fila de tamaño automático */
     grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
+}
+/*New stil*/
+.tainer3{
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columnas iguales */
+    background-color: black;
 }
 /*Estilos generar nueva orden*/
 .input-user-name-order{
@@ -50,16 +56,16 @@
 }
 .fondoOscuro{
     border-radius: 10px;
-    background-color: rgb(143, 146, 146);
+    background-color: rgb(60, 143, 143);
     margin-bottom: -50px;
 }
 .list-product{
-    max-height: 160px; /* Ajusta según tu diseño */
-    overflow-y: auto; /* Habilita scroll vertical */
+    max-height: 160px;/* Ajusta según tu diseño */
+    overflow-y: auto;
 }
 .list-users-Norder{
-    max-height: 150px; /* Ajusta según tu diseño */
-    overflow-y: auto; /* Habilita scroll vertical */
+    max-height: 150px;
+    overflow-y: auto;/* Habilita scroll vertical */
 }
 #message-user-order-new{
     color: rgb(218, 37, 118);
@@ -80,36 +86,37 @@
     margin-top: 0px;
 }
 h4{
-    color: rgb(8, 126, 134);
+    color: rgb(29, 105, 141);
     text-align: center;
     margin-top: 0px;
     font-size: 20px;
+    margin-bottom: 0;
 }
 /*Estilos segundo formulario*/
 .permisos-productss{
-    margin-top: 0px;
+    margin-top: 5px;
     align-items: center;/*Centra elementos horizontalemnte*/
     background-color: rgb(230, 230, 227);
     display: flex;
-    flex-direction: column; /*'row' pone en fila ambos div, 'column'->Organiza en columna los elementos */
-    gap: 10px; /* Espacio entre los div */
+    flex-direction: column;/*'row' pone en fila ambos div, 'column'->Organiza en columna los elementos */
+    gap: 10px;/* Espacio entre los div */
     border-radius: 10px;
 }
 .cont-divs{
     display: flex;
     flex-direction: row;
+    margin-top: 20px;/*aca div que contiene los fonfod*/
 }
 .select-usuario{
+    margin: 2px;
     height: 200px;
-    width: 190px;
+    width: 150px;
     background-color: rgb(190, 190, 196);
     border-radius: 10px;
-    margin-right: px;
-    margin-top: px;
 }
 .select-product{
     height: 200px;
-    width: 190px;
+    width: 150px;
     background-color: rgb(190, 190, 196);
     border-radius: 10px;
     margin-top: px;
@@ -117,18 +124,19 @@ h4{
 /*UBicacion de peticon users*/
 .listt{
     margin-top: -230px;
-    margin-left: -230px;
-    max-height: 150px; /* Ajusta según tu diseño */
-    overflow-y: auto; /* Habilita scroll vertical */
+    margin-left: -170px;
+    max-height: 150px;/* Ajusta según tu diseño */
+    overflow-y: auto;/* Habilita scroll vertical */
 }
 .listt-product{
-    margin-left: 170px;
+    margin-left: 135px;
     margin-top: -150px;
-    max-height: 150px; /* Ajusta según tu diseño */
-    overflow-y: auto; /* Habilita scroll vertical */
+    max-height: 150px;/* Ajusta según tu diseño */
+    overflow-y: auto;/* Habilita scroll vertical */
 }
 /*Mensajes sobre diferentes peticiones*/
 #message-usuario{
     color: rgb(223, 41, 126);
     text-align: left;
+    margin-bottom: -15px;
 }

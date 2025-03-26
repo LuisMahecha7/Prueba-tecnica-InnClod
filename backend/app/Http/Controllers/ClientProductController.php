@@ -45,8 +45,7 @@ class ClientProductController extends Controller
             ]);
         }
 
-        return response()->json(['message' => 'Registro exitoso', 'client_product' => $clientproduct ], 201);
-
+        return response()->json(['message' => 'Solicitud registrada con exíto', 'client_product' => $clientproduct ], 201);
     }
 
     /**
