@@ -12,7 +12,7 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(OrderDetail::all());
     }
 
     /**
@@ -28,7 +28,20 @@ class OrderDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'order_id' => 'required|numeric',
+            'product_id' => 'required|numeric',
+            'quantity' => 'required|numeric',//para activar validacion de confirmacion de password 'confirmed' despues del pipe(|)
+        ]);
+        $orderdetail = OrderDetail::create([
+            'order_id' => $request->order_id,
+            'product_id' => $request->product_id,
+            'quantity' => $request->quantity
+        ]);
+        return response()->json([
+            'message' => 'order detail register succesfull',
+            'user' => $orderdetail
+        ], 201);
     }
 
     /**

@@ -12,7 +12,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Order::all());
     }
 
     /**
@@ -28,7 +28,16 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required|numeric',
+        ]);
+        $order = Order::create([
+            'user_id' => $request->user_id
+        ]);
+        return response()->json([
+            'message' => 'Orden registrada con exito',
+            'order' => $order
+        ], 201);
     }
 
     /**

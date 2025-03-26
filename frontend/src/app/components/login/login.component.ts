@@ -31,7 +31,7 @@ export class LoginComponent {
         .subscribe({
           next: (response: any) => {
             console.log('Inicio de sesión exitoso:', response);
-            this.router.navigate(['/home-private']);
+            this.router.navigate(['/order-new']);
             localStorage.setItem('usuario', JSON.stringify(response.user));//GUardar usuario en localstorage
             console.log('this response', response);
             console.log('this responseee', response.user);

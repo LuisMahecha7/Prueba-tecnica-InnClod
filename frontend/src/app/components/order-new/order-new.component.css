@@ -1,128 +1,93 @@
-.contenedor-principalit{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
-  gap: 10px; /* Espacio entre áreas */
-  margin-right: 10px;
+.tainer-general{
+    display: grid;
+    grid-template-rows: auto auto;/* Dos filas de tamaño automático */
 }
-.espacio-trabajo{
-    margin-top: 150px;
-    background-color: rgb(230, 230, 227);
-    width: 1000px;
-    height: 400px;
-    margin-left: 60px;
-    border-radius: 10px;
+/*New style*/
+.tainer2{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas iguales */
+}
+/*New style*/
+.tainer2B {
+    display: grid; /* Esto debe ir antes */
+    grid-template-rows: auto; /* 1 fila de tamaño automático */
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
 }
 /*Estilos generar nueva orden*/
 .input-user-name-order{
     border-radius: 5px;
-    margin-left: 20px;
-    width: 350px;
+    background-color: rgb(136, 228, 192);
+    padding-left: 15px;
+    padding-top: 3px;
+    width: 500px;
     height: 40px;
-    background-color: rgb(186, 231, 235);
-    padding-top: 7px;
-    padding-left: 30px;
-}
-.new-ordenn{
-  display: flex;
-  flex-direction: row;
 }
 #selecction-userord{
     font-size: 13px;
     margin-left: 80px;
-    margin-right: 500px;
+    margin-bottom: -90px;
 }
 #new-order{
     font-size: 13px;
+    margin-left: 520px;
+    margin-bottom: -90px
 }
 .butooons{
-    margin-top: 40px;
     display: flex;
     flex-direction: row;/*todos los elementos en una fila*/
-    margin-bottom: 50px;
-}
-.title-user-other{
-    display: flex;
-    flex-direction: row;
-    gap: 270px;
 }
 #regis-prod{
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
     font-size: 15px;
 }
 #product-permisstio{
     font-size: 15px;
-    margin-left: 100px;
+    margin-left: 0px;
 }
 #permisos-prod{
     font-size: 15px;
 }
-.div-orders-fondo {
-    margin-top: 0px;
-    display: flex;
-    flex-direction: row;
-}
-.user-selected-order{
-    width: 200px;
-    height: 190px;
-    background-color: rgb(190, 190, 196);
+.fondoOscuro{
     border-radius: 10px;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: 300px;
-    padding-top: 10px;
-}
-.detail-products{
-    height: 190px;
-    width: 450px;
-    border-radius: 10px;
-    background-color: rgb(190, 190, 196);
-    margin-top: 30px;
-    margin-left: 0px;
+    background-color: rgb(143, 146, 146);
+    margin-bottom: -50px;
 }
 .list-product{
-    margin-left: 530px;
-    margin-top: -210px;
     max-height: 160px; /* Ajusta según tu diseño */
     overflow-y: auto; /* Habilita scroll vertical */
-    align-items: center;
-    width: 450px;
 }
 .list-users-Norder{
-    max-height: 160px; /* Ajusta según tu diseño */
+    max-height: 150px; /* Ajusta según tu diseño */
     overflow-y: auto; /* Habilita scroll vertical */
-    margin-left: -5px;
 }
 #message-user-order-new{
-    color: rgb(230, 66, 140);
-    margin-left: 5px;
-    margin-bottom: -30px;
+    color: rgb(218, 37, 118);
 }
 .register-productss{
     background-color: rgb(230, 230, 227);
-    margin-top: 150px;
+    margin-top: 0px;
     border-radius: 10px;
 }
 .register-productss .formGroup{
     margin: 15px;
 }
-
 .btn-regis {
     text-align: center;
     margin-top: 20px;
 }
 .area-work{
-    margin-top: 50px;
+    margin-top: 0px;
 }
 h4{
     color: rgb(8, 126, 134);
     text-align: center;
-    margin-top: 40px;
+    margin-top: 0px;
     font-size: 20px;
 }
 /*Estilos segundo formulario*/
 .permisos-productss{
-    margin-top: 150px;
+    margin-top: 0px;
     align-items: center;/*Centra elementos horizontalemnte*/
     background-color: rgb(230, 230, 227);
     display: flex;
@@ -139,15 +104,15 @@ h4{
     width: 190px;
     background-color: rgb(190, 190, 196);
     border-radius: 10px;
-    margin-right: 10px;
-    margin-top: 7px;
+    margin-right: px;
+    margin-top: px;
 }
 .select-product{
     height: 200px;
     width: 190px;
     background-color: rgb(190, 190, 196);
     border-radius: 10px;
-    margin-top: 7px;
+    margin-top: px;
 }
 /*UBicacion de peticon users*/
 .listt{
