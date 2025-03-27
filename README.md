@@ -27,6 +27,7 @@ Prueba tecnica InnClod
      
 
     Observaciones:
+    
 
      se agrego el archivo del backend .env, donde se definen la configuracion de credenciales para la ejecucion de la base de datos, por seguridadeste archivo no se sube al repositorio
      para no exponer datos sensibles, pero se agrego para facilitar el inicio de la app.
@@ -39,11 +40,9 @@ Prueba tecnica InnClod
      Pasos para instalar dependencias y configurar Laravel: Similar a con angular nosubicamos en terminal en el interior o ruta base de la carpeta backend y alli ejecutamos en la terminal
      composer install: instala las dependencias necesarias para la ejecucion del proyecto, despues ejecuta: php artisan serve, para iniciar el sevicio de backend
 
-     Nota: Como el .env ya está en el repositorio, el usuario no necesita configurarlo.
-
-
-
-
+     Nota: Como el .env ya está en el repositorio, el usuario no necesita configurarlo. Ademas para la ejecucion del backend, se requiere haber inicado el servidor de apache Xampp e ingresar,
+     al navegador a la ruta: http://localhost/phpmyadmin/   estando ahi va ha crear la base de datos con el nombre: db_prueba_InnClod con la configuración: utf8mb4_general_ci, despues ve a la
+     opcion importar y carga el archivo con la data para el esquema de la db.
 
 
 
