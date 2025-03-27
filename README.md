@@ -1,16 +1,16 @@
 Prueba tecnica InnClod
 
-1. clone(descargue) el proyecto, ya sea por medio de los links, que encontrará en la opción Code, en la vista, del repositorio compartido,
-      ofrece varias opciones para descargarlo, SSH y HTTPS debera copiar el link, segun sea la configuracion realizada, para la conexion con GitHub
-      tambien ofrece la opción de descargar un archivo .zip el cual movera a la ubicación donde ejecutara el proyecto, alli dscomprime el archivo y
-      tendra la carpeta principal del proyecto(Prueba-tecnica-InnClod-main), dentro de esta carpta encontrara dos carpetas mas.
-   
-      1.1. frontend(Angular):  Es bajo la cual se esta realizando, el diseño de la interfaz y vista principal de la aplicación, costa por ahora,
-      de un formulario deonde el usuario debera ingresar: nombre, correo y contraseña, para que se habilite el botón de registrarse, al dar clic en reigstrarse, sera dirigido,
-      a una vista donde encontrara el formulaio de iniciodde sesion, igualmente aca ingresara nuevamente el correo y contraseña con la cual realizo el registro.
-      Solo despues de la correcta validación de credenciales el backend retorna un mensaje de Credenciales correctas bienvenido ademas genera un token para autenticar la sesión y
-      protejer las vistas.
-      Al inicar sesión, 
+1. Clone(descargue) el proyecto, ya sea por medio de los links, que encontrará en la opción Code, en la vista, del repositorio compartido,
+   ofrece varias opciones para descargarlo, SSH y HTTPS deberá copiar el link, según sea la configuración realizada, para la conexión con GitHub
+   también ofrece la opción de descargar un archivo .ZIP el cual moverá a la ubicación donde ejecutara el proyecto, allí descomprime el archivo y
+   tendrá la carpeta principal del proyecto(Prueba-tecnica-InnClod-main), dentro de esta carpeta encontrará dos carpetas más.
+
+    1.1. frontend(Angular): Es bajo la cual se está realizando, el diseño de la interfaz y vista principal de la aplicación, costa por ahora,
+    de un formulario dónde el usuario deberá ingresar: nombre, correo y contraseña, para que se habilite el botón de   registrarse, al dar clic en registrarse, será dirigido,
+    a una vista donde encontrara el formulario de inicio de sesión, igualmente acá ingresara nuevamente el correo y contraseña con la cual realizo el registro.
+    Solo después de la correcta validación de credenciales el backend retorna un mensaje de Credenciales correctas bienvenido además genera un token para autenticar la sesión y
+    proteger la navegacion entre las vistas.
+    Al iniciar sesión,
 
 
     consiste(la vista principal) de un formulario para el registro de usuarios y administración validacion de autentucación
