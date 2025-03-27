@@ -1,4 +1,6 @@
-1. Se debe clonar el proyecto desde el repositorio
+1. Se debe clonar el proyecto desde el repositorio, indicado
+2. Se debe ingesar a la carpeta  pricipal y ubicar la carpeta frontend(Angular) y backend(Laravel)
+3. validar el archivo
 
 1. se debe iniciar el servicio(servidor) del frontend angular localhost 4200
     Nos ubicamos desde la terminal en la carpeta, front y ejecutamos el comando 'ng serve'
@@ -18,9 +20,8 @@ Despues de clonar el proyecto desde el repositorio de GitHub,
 
 
 
-        1. El primer usuario autenticado tendra, permisos de administrador, los demas seran usuarios normales, o puede actualizar los permisos,
-        para acceder a la vista donde solo un usuario con role = 'admin', puede acceder al menu de configuracion y cracion de productos de productos
+        1. Se creo el programa enfocado a un usuario 'admin, con las opciones Habilitadas
 
-        Datos atener en cuenta:
+        :
             1. Un usuario admin, si puede seleccionar un cliente aparte de él para generar ordenes nuevas a nombre de ese cliente,
                 a diferencia del user normal, este solo podra generar ordenes para él mismo.

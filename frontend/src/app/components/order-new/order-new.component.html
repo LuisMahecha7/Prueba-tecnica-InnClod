@@ -46,7 +46,8 @@
               {{ productsGenerateOrden.name }} <strong style="color: blue;"> -- Stock :</strong> {{ productsGenerateOrden.stock }}
               <strong style="color: purple;"> Cantidad :</strong>
             </p>
-            <input type="number" style="border-radius: 10px;" [(ngModel)]="productsGenerateOrden.quantity" [max]="productsGenerateOrden.stock" min="1" (change)="validateQuantity(productsGenerateOrden)">
+            <!--<input type="number" style="border-radius: 10px; width: 60px;" [(ngModel)]="productsGenerateOrden.quantity" (change)="validateQuantity(productsGenerateOrden)">-->
+            <input type="number" style="border-radius: 10px; width: 60px;" [(ngModel)]="productsGenerateOrden.quantity" (input)="validateQuantity(productsGenerateOrden)">
           </li>
         </ul>
       </div>
