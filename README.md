@@ -26,24 +26,20 @@ Prueba tecnica InnClod
 
      
 
-     Observaciones:
+    Observaciones:
 
      se agrego el archivo del backend .env, donde se definen la configuracion de credenciales para la ejecucion de la base de datos, por seguridadeste archivo no se sube al repositorio
      para no exponer datos sensibles, pero se agrego para facilitar el inicio de la app.
 
 
      1.2. Configuración del Backend (Laravel):
-     El backend se encarga de exponer mediante routes, endpoints ya configurados donde recibe peticiones del frontend, y las dirige al lugar indicado donde procesa y retorna una respuesta adecuada,
-     el backend se encarga de la inteaccion cercana con la base de datos.
+     El backend se encarga de exponer mediante routes, endpoints ya configurados donde recibe y procesa peticiones del frontend, retornando una respuesta adecuada,
+     el backend se encarga de la inteaccion cercana con la base de datos, asi mismo controla el esquema de la db mediante modelos y estructura validaciones mediante controladores,
+     Laravel maneja el patron de arquitectura MVC, modelo, vista controlador.
+     Pasos para instalar dependencias y configurar Laravel: Similar a con angular nosubicamos en terminal en el interior o ruta base de la carpeta backend y alli ejecutamos en la terminal
+     composer install: instala las dependencias necesarias para la ejecucion del proyecto, despues ejecuta: php artisan serve, para iniciar el sevicio de backend
 
-Pasos para instalar dependencias y configurar Laravel:
-
-cd backend
-composer install
-php artisan migrate --seed  # Si tienes datos de prueba
-php artisan serve
-
-    Nota: Como el .env ya está en el repositorio, el usuario no necesita configurarlo.
+     Nota: Como el .env ya está en el repositorio, el usuario no necesita configurarlo.
 
 
 
@@ -52,15 +48,15 @@ php artisan serve
 
 
 
-    Tecnologías utilizadas
+     Tecnologías utilizadas
 
-    Laravel: v12.3.0
+     Laravel: v12.3.0
 
-    Node.js: v22.13.1
+     Node.js: v22.13.1
 
-    Angular: v17.x
+     Angular: v17.x
 
-    Base de datos: MySQL 8.x
+     Base de datos: MySQL 8.x
 
 
 
