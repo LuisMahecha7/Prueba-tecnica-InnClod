@@ -6,12 +6,62 @@ Prueba tecnica InnClod
    tendrá la carpeta principal del proyecto(Prueba-tecnica-InnClod-main), dentro de esta carpeta encontrará dos carpetas más.
 
     1.1. frontend(Angular): Es bajo la cual se está realizando, el diseño de la interfaz y vista principal de la aplicación, costa por ahora,
-    de un formulario dónde el usuario deberá ingresar: nombre, correo y contraseña, para que se habilite el botón de   registrarse, al dar clic en registrarse, será dirigido,
+    de un formulario dónde el usuario deberá ingresar: nombre, correo y contraseña, para que se habilite el botón para registrarse, al dar clic será dirigido,
     a una vista donde encontrara el formulario de inicio de sesión, igualmente acá ingresara nuevamente el correo y contraseña con la cual realizo el registro.
-    Solo después de la correcta validación de credenciales el backend retorna un mensaje de Credenciales correctas bienvenido además genera un token para autenticar la sesión y
+    Solo después de la correcta validación de credenciales el backend retorna un mensaje de Credenciales correctas bienvenido, además genera un token para autenticar la sesión y
     proteger la navegacion entre las vistas.
-    Al iniciar sesión,
 
+    Al iniciar sesión,encontraremos la vista pricipal del proyecto donde se podra visualizar un mensaje saludando al usuario autenticado, se le agrego al usuario una columna rol, el caul,
+    les brindara accesos a diferentes opciones, ej: un usuario admin ingresa al sistema y podra asiganr productos en diferentes cantidades a nombre de cualquier usuario que se encuentre
+    registrado en el sistema, mientras que un usuario con rol user, solo podra generar ordenes que se asignan al dueño de la cuenta.
+
+
+    Pasos para instalar dependencias y ejecutar la aplicacion Angular:
+    vamos aejecutar una cmd o terminal y nos ubicamos dentro de la carpeta frontend, navegando entre carpetas con el comando 'cd', cuando nos encontremos en la ruta base de la carpeta frontend
+    vamos a ejecutar los siguientes comandos: npm install, instalara todas las dependencias necesarias para que el proyecto se ejecute
+
+     cd frontend
+     
+     ng serve
+
+
+
+
+
+     Observaciones:
+
+     se agrego el archivo del backend .env, donde se definen la configuracion de credenciales para la ejecucion de la base de datos, por seguridadeste archivo no se sube al repositorio
+     para no exponer datos sensibles, pero se agrego para facilitar el inicio de la app.
+    
+
+
+
+
+
+
+
+
+
+
+    Tecnologías utilizadas
+
+    Laravel: v12.3.0
+
+    Node.js: v22.13.1
+
+    Angular: v17.x
+
+    Base de datos: MySQL 8.x
+
+
+
+
+
+
+
+
+
+    
 
     consiste(la vista principal) de un formulario para el registro de usuarios y administración validacion de autentucación
       para el ingreso  y backend(Laravel)
