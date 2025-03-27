@@ -30,17 +30,25 @@ class OrderDetailController extends Controller
     {
         $request->validate([
             'order_id' => 'required|numeric',
-            'product_id' => 'required|numeric',
-            'quantity' => 'required|numeric',//para activar validacion de confirmacion de password 'confirmed' despues del pipe(|)
+            'product_id' => 'required|array', // Ahora acepta un array
+            'product_id.*' => 'numeric', // Cada elemento del array debe ser un número
+            'quantity' => 'required|array', // También debe ser un array de cantidades
+            'quantity.*' => 'numeric' // Cada cantidad debe ser un número
         ]);
-        $orderdetail = OrderDetail::create([
-            'order_id' => $request->order_id,
-            'product_id' => $request->product_id,
-            'quantity' => $request->quantity
-        ]);
+
+        $orderDetails = [];
+
+        foreach ($request->product_id as $index => $productId) {
+            $orderDetails[] = OrderDetail::create([
+                'order_id' => $request->order_id,
+                'product_id' => $productId,
+                'quantity' => $request->quantity[$index] ?? 1 // Usa la cantidad correspondiente
+            ]);
+        }
+
         return response()->json([
-            'message' => 'order detail register succesfull',
-            'user' => $orderdetail
+            'message' => 'Detalles de la orden registrados exitosamente',
+            'order_details' => $orderDetails
         ], 201);
     }
 

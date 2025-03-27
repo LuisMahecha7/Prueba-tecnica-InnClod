@@ -35,7 +35,7 @@ class OrderController extends Controller
             'user_id' => $request->user_id
         ]);
         return response()->json([
-            'message' => 'Orden registrada con exito',
+            'message' => 'La orden ha sido registrada, satisfactoriamente, response-back.',
             'order' => $order
         ], 201);
     }

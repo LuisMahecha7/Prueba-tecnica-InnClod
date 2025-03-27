@@ -29,7 +29,7 @@ class ClientProductController extends Controller
     public function store(Request $request)
     {
         $user_id = $request->user_id;
-        $product_ids = $request->product_id; // Aquí llega como array
+        $product_ids = $request->product_id; // Aquí llega como arreglo
 
         if (is_array($product_ids)) {
             foreach ($product_ids as $product_id) {

@@ -41,18 +41,19 @@ export class OrderNewComponent {
       price: ['', [Validators.required]],
     });
   }
-    // Forma para validar + 1 formularios
-    userFormValidate = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
-    });
-//Se inicialliza valiable para la peticion entender, como cambia variable: "productsGenerateOrden" con nrModel
-    productsGenerateOrden = {
-      quantity: 1,  // Inicializamos con un valor por defecto
-      stock: 100,
-      name: 'Producto A'
-    };
+  // Forma para validar + 1 formularios
+  userFormValidate = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+  });
+
+  //Se inicialliza valiable para la peticion entender, como cambia variable: "productsGenerateOrden" con nrModel
+  productsGenerateOrden = {
+    quantity: 1,  // Inicializamos con un valor por defecto
+    stock: 100, // NO sirvio Boorrar
+    name: 'Producto A'//vALIDAR para borrar
+  };
   //Peticion para obtener productos, para asignar permisos("** Validar como Reutilizar la data, de una sola petición**")
   fetchProductsPermisions() {
     this.http.get<any[]>('http://127.0.0.1:8000/api/products')
@@ -165,8 +166,8 @@ export class OrderNewComponent {
       return
     }
   }
-   //Petición para obtener usuarios
-   fetchUsers() {
+  //Petici0n para obtener usuarios
+  fetchUsers() {
     this.http.get<any[]>('http://localhost:8000/api/users')
     .subscribe(
       data => {
@@ -194,7 +195,7 @@ export class OrderNewComponent {
       break;
   }*/
   validateQuantity(product: any) {
-    console.log('Valor seleccionado por el usuario:', product.quantity);
+    console.log('Valor seleccionado por el usuario:', product.quantity);//contiene totl seleccinado x user a nivel de cantida del stock.
     if (product.quantity < 1) {
       console.error('La cantidad no puede ser menor que 1.');
       console.log('this.value', this.value);
@@ -230,18 +231,12 @@ export class OrderNewComponent {
   toggleProductSelection(productSelectedNewOrder: any, event: any) {
     if (event.target.checked) {
       this.ProductsSelctOrderr.push(productSelectedNewOrder);
-      console.log('event.target.checked', event.target.checked);
-      console.log('productSelectedNewOrder.id', productSelectedNewOrder.id);
-      console.log('productSelectedNewOrder', productSelectedNewOrder);
-      console.log('this.ProductsSelctOrderr.', this.ProductsSelctOrderr);
-      console.log('this.ProductsSelctOrderr.', this.ProductsSelctOrderr);
+      console.log('this.ProductsSelctOrderrarray, en validacion',this.ProductsSelctOrderr);
     } else {
       this.ProductsSelctOrderr = this.ProductsSelctOrderr.filter(p => p.id !== productSelectedNewOrder.id);
-      console.log('this.ProductsSelctOrderr.else', this.ProductsSelctOrderr);
-      console.log('this.ProductsSelctOrderr-else.', productSelectedNewOrder);
     }
   }
-  /** Petición Guardar orden*/
+  /** Validacion xra Guardar orden*/
   saveOrder() {
     if (!this.userSelectedOrder) {
       this.message = 'Seleccione un usuario para asignar la orden';
@@ -257,7 +252,40 @@ export class OrderNewComponent {
       console.log('this.ProductsSelctOrderr.length', this.ProductsSelctOrderr)
       return;
     }
-
+    //Validación de la cantidad de cada producto seleccionado
+    for (let p of this.ProductsSelctOrderr) {
+      if (!p.quantity || p.quantity < 1) {
+        this.message = `La cantidad para ${p.name} debe ser minimo 1.`;
+        setTimeout(() => this.message = '', 2000);
+        return;
+      }
+      if (p.quantity > p.stock) {
+        this.message = `La cantidad paa ${p.name} supera el stock disponible (${p.stock}).`;
+        setTimeout(() => this.message = '', 2000);
+        return;
+      }
+    }
+    //Data for order.
+        //Data for order.
+        const dataDetailOrder = {
+          order_id: this.userSelectedOrder.id,
+          product_id: this.ProductsSelctOrderr.map(p => p.id),
+          quantity: this.ProductsSelctOrderr.map(p => p.quantity || 1)
+        };
+    this.http.post('http://127.0.0.1:8000/api/OrderDetail', dataDetailOrder)
+    .subscribe({
+      next: (response: any) => {
+        console.log('this-response', response);
+        this.message = response.message;
+        setTimeout(() => this.message = '', 3000);
+      },
+      error: (error) => {
+        console.log('this-error', error);
+        this.message = error.error.message || 'Ocurrió un error';
+        setTimeout(() => this.message = '', 2003);
+      }
+    });
+    //Peticion xra registrar orden
     const dataOrder = {
       user_id: this.userSelectedOrder.id
     };
@@ -274,25 +302,6 @@ export class OrderNewComponent {
         setTimeout(() => this.message = '', 2000);
       }
     });
-    //Data for order.
-    const dataDetailOrder = {
-      order_id: this.userSelectedOrder.id,
-      product_id: this.product.id,
-      quantity: this.product.value
-    }; 
-    this.http.post('http://localhost:8000/api/orders', dataDetailOrder)
-    .subscribe({
-      next: (response: any) => {
-        console.log('this-response', response);
-        this.message = response.message;
-        setTimeout(() => this.message = '', 2000);
-      },
-      error: (error) => {
-        console.log('this-error', error);
-        this.message = error.error.message || 'Ocurrió un error';
-        setTimeout(() => this.message = '', 2003);
-      }
-    })
   }
   /**GUardar detalles de la orden
   saveOrderDetails(){};*/
