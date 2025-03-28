@@ -52,12 +52,12 @@ Prueba tecnica InnClod
 
 
 
-     Tecnologías utilizadas
+     Tecnologías utilizadas.
 
-     Laravel: v12.3.0
+     Laravel: Laravel Framework 12.3.0
 
      Node.js: v22.13.1
 
-     Angular: v17.x
+     Angular: 19.2.4
 
-     Base de datos: MySQL 8.x
+     Sistema operativo: Linux.
