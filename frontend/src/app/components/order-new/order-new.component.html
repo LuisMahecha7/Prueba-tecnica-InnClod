@@ -7,8 +7,8 @@
         </div>
         <button style="border-radius: 10px; font-size: 15px; margin-left: 10px;" (click)="logout()">Cerrar sesión</button>
     </div>
-    <div class="alertmessage" style="margin-top: 130px; margin-left: 900px;">
-      <div *ngIf="message" class="alert alert-danger" style="padding: 7px; width: 500px; padding-left: 40px;">
+    <div class="alertmessag" style="margin-top: 130px; margin-left: 900px;">
+      <div *ngIf="message" class="alert alert-position" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}" style="padding: 7px; width: 500px; padding-left: 40px;">
         {{ message }}
       </div>
     </div>
@@ -29,7 +29,6 @@
         <div class="fondoOscuro"></div><!--Div para mostrar usuarios para orden-->
         <div class="fondoOscur" style="height: 190px; width: 405px;"></div><!--Div fondo oscuro, para mostrar productos-->
       <div class="">
-        <button type="submit" id="selecction-userord" class="btn btn-success" (click)="fetchUsersOrder()">Seleccionar</button>
         <button type="submit" id="new-order" class="btn btn-success" (click)="saveOrder()">Generar Orden</button>
       </div>
       <div class="iteratorPandU" style=" margin-left: 40px; margin-top: -150px; display: flex; flex-direction: row; justify-content: space-between;">

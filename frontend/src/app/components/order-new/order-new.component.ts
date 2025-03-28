@@ -28,11 +28,15 @@ export class OrderNewComponent {
   usersGetRequestOrder: any[] = [];//generar orden con otro usuario.
   userSelectedOrder: any = null//para solo perm, selecc.. 1 usuario, Para generar una orden.
   message: string = ''; //Mensaje succes / danger
+  isSuccess: boolean = false;
   product: any  = null;//valida producto seleccionado para guardar la orden.
   value: any ;
+  order_id: any;
   ngOnInit() {
-    this.usuarioName = JSON.parse(localStorage.getItem('usuario') || 'null')//se recupera usuario guardado en el login de localstorage
-    this.copyuserName = this.usuarioName
+    this.usuarioName = JSON.parse(localStorage.getItem('usuario') || 'null');//se recupera usuario guardado en el login de localstorage
+    this.copyuserName = this.usuarioName;
+    this.fetchProducts();
+    this.fetchUsersOrder();
   }
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private cd: ChangeDetectorRef) {
     this.registerForm = this.fb.group({
@@ -205,13 +209,10 @@ export class OrderNewComponent {
       return;
     }
     if (product.quantity > product.stock) {
-      console.log('Valor seleccionado por el usuario-2if:', product.quantity);
-      console.error(`Seleccione una cantidad disponible dentro del stock.!${product.stock}`);
       product.quantity = 1;
       return;
     }
     if (product.quantity == this.value){
-      console.error('Debe seleccionar una cantidad para ese producto3-if');
       this.message = 'Seleccione una cantidad para el producto.';
       setTimeout(() => this.message = '', 2000)
       product.quantity = this.value;
@@ -246,10 +247,7 @@ export class OrderNewComponent {
     }
     if (this.ProductsSelctOrderr.length < 1) {
       console.error('Seleccione al menos 1 producto, para generar la orden.');
-      this.message = 'Seleccione mínimo 1 producto';
       setTimeout(() => this.message = '', 2000)
-      console.log('this.ProductsSelctOrderr.length', this.ProductsSelctOrderr.length)
-      console.log('this.ProductsSelctOrderr.length', this.ProductsSelctOrderr)
       return;
     }
     //Validación de la cantidad de cada producto seleccionado
@@ -265,16 +263,34 @@ export class OrderNewComponent {
         return;
       }
     }
-    //Data for order.
-        //Data for order.
-        const dataDetailOrder = {
-          order_id: this.userSelectedOrder.id,
-          product_id: this.ProductsSelctOrderr.map(p => p.id),
-          quantity: this.ProductsSelctOrderr.map(p => p.quantity || 1)
-        };
+    //Peticion xra registrar orden
+    const dataOrder = {
+      user_id: this.userSelectedOrder.id
+    };
+    this.http.post('http://localhost:8000/api/orders', dataOrder)
+    .subscribe({
+      next: (response: any) => {
+        this.order_id = response.order_id;
+        this.message = response.message;
+        setTimeout(() => this.message = '', 20000);
+      },
+      error: (error) => {
+        this.message = error.error.message || 'Ocurrió un error';
+        setTimeout(() => this.message = '', 2000);
+      }
+    });
+    /*Validate-register-order-details*/
+    const dataDetailOrder = {
+      order_id: this.order_id,
+      product_id: this.ProductsSelctOrderr.map(p => p.id),
+      quantity: this.ProductsSelctOrderr.map(p => p.quantity || 1)
+    };
     this.http.post('http://127.0.0.1:8000/api/OrderDetail', dataDetailOrder)
     .subscribe({
       next: (response: any) => {
+        console.log('this-response', this.order_id);
+        console.log('this-response', this.ProductsSelctOrderr.map(p => p.id));
+        console.log('this-response', this.ProductsSelctOrderr.map(p => p.quantity));
         console.log('this-response', response);
         this.message = response.message;
         setTimeout(() => this.message = '', 3000);
@@ -285,26 +301,7 @@ export class OrderNewComponent {
         setTimeout(() => this.message = '', 2003);
       }
     });
-    //Peticion xra registrar orden
-    const dataOrder = {
-      user_id: this.userSelectedOrder.id
-    };
-    this.http.post('http://localhost:8000/api/orders', dataOrder)
-    .subscribe({
-      next: (response: any) => {
-        console.log('this-response', response);
-        this.message = response.message;
-        setTimeout(() => this.message = '', 2000);
-      },
-      error: (error) => {
-        console.log('this-error', error);
-        this.message = error.error.message || 'Ocurrió un error';
-        setTimeout(() => this.message = '', 2000);
-      }
-    });
   }
-  /**GUardar detalles de la orden
-  saveOrderDetails(){};*/
   //Guardar cambios peticion de restriccion de productos a un usuario especifico.
   saveChanges(){
     if(!this.selectedUser){

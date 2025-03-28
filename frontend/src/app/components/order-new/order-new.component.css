@@ -35,7 +35,7 @@
 }
 #new-order{
     font-size: 13px;
-    margin-left: 520px;
+    margin-left: 630px;
     margin-bottom: -90px
 }
 .butooons{
@@ -123,20 +123,25 @@ h4{
 }
 /*UBicacion de peticon users*/
 .listt{
-    margin-top: -230px;
+    margin-top: -180px;
     margin-left: -170px;
     max-height: 150px;/* Ajusta según tu diseño */
     overflow-y: auto;/* Habilita scroll vertical */
 }
 .listt-product{
     margin-left: 135px;
-    margin-top: -150px;
+    margin-top: -110px;
     max-height: 150px;/* Ajusta según tu diseño */
     overflow-y: auto;/* Habilita scroll vertical */
 }
 /*Mensajes sobre diferentes peticiones*/
-#message-usuario{
-    color: rgb(223, 41, 126);
-    text-align: left;
-    margin-bottom: -15px;
+
+.alertmessage{
+    position: absolute;   /* Se coloca de forma absoluta */
+    top: 120px;            /* Se ubica 10px desde arriba */
+    left: 50%;            /* Se mueve al centro horizontalmente */
+    transform: translateX(-50%);  /* Ajusta el centro exacto */
+    width: auto;          /* Ajusta el ancho al contenido */
+    padding: 10px 20px;   /* Espaciado interno */
+    z-index: 1000;        /* Se asegura de estar sobre los demás elementos */
 }

@@ -1,0 +1,10 @@
+.alert-position {
+    position: absolute;   /* Se coloca de forma absoluta */
+    top: 120px;            /* Se ubica 10px desde arriba */
+    left: 50%;            /* Se mueve al centro horizontalmente */
+    transform: translateX(-50%);  /* Ajusta el centro exacto */
+    width: auto;          /* Ajusta el ancho al contenido */
+    padding: 10px 20px;   /* Espaciado interno */
+    z-index: 1000;        /* Se asegura de estar sobre los demás elementos */
+  }
+  

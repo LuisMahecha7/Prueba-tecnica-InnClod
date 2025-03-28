@@ -31,8 +31,6 @@ class OrderDetailController extends Controller
         $request->validate([
             'order_id' => 'required|numeric',
             'product_id' => 'required|array', // Ahora acepta un array
-            'product_id.*' => 'numeric', // Cada elemento del array debe ser un número
-            'quantity' => 'required|array', // También debe ser un array de cantidades
             'quantity.*' => 'numeric' // Cada cantidad debe ser un número
         ]);
 
