@@ -36,7 +36,7 @@
 #new-order{
     font-size: 13px;
     margin-left: 630px;
-    margin-bottom: -90px
+    margin-bottom: -130px
 }
 .butooons{
     display: flex;
@@ -123,14 +123,14 @@ h4{
 }
 /*UBicacion de peticon users*/
 .listt{
-    margin-top: -180px;
+    margin-top: -210px;
     margin-left: -170px;
     max-height: 150px;/* Ajusta según tu diseño */
     overflow-y: auto;/* Habilita scroll vertical */
 }
 .listt-product{
     margin-left: 135px;
-    margin-top: -110px;
+    margin-top: -160px;
     max-height: 150px;/* Ajusta según tu diseño */
     overflow-y: auto;/* Habilita scroll vertical */
 }

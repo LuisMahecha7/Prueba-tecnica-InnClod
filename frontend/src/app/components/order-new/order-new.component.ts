@@ -241,25 +241,26 @@ export class OrderNewComponent {
   saveOrder() {
     if (!this.userSelectedOrder) {
       this.message = 'Seleccione un usuario para asignar la orden';
-      setTimeout(() => this.message = '', 2000);
+      setTimeout(() => this.message = '', 3000);
       console.log('this.userSelectedOrder', this.userSelectedOrder)
       return;
     }
     if (this.ProductsSelctOrderr.length < 1) {
       console.error('Seleccione al menos 1 producto, para generar la orden.');
-      setTimeout(() => this.message = '', 2000)
+      this.message = 'Seleccione al menos 1 producto, para generar la orden.';
+      setTimeout(() => this.message = '', 3000)
       return;
     }
     //Validación de la cantidad de cada producto seleccionado
     for (let p of this.ProductsSelctOrderr) {
       if (!p.quantity || p.quantity < 1) {
         this.message = `La cantidad para ${p.name} debe ser minimo 1.`;
-        setTimeout(() => this.message = '', 2000);
+        setTimeout(() => this.message = '', 3000);
         return;
       }
       if (p.quantity > p.stock) {
         this.message = `La cantidad paa ${p.name} supera el stock disponible (${p.stock}).`;
-        setTimeout(() => this.message = '', 2000);
+        setTimeout(() => this.message = '', 3000);
         return;
       }
     }

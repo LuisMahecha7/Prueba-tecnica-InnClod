@@ -17,13 +17,12 @@
     <div class="sas" style="background-color: rgb(206, 206, 204); border-radius: 10px; margin: 8px; padding: 8px; height: 400px;">
       <div class="butooons" >
         <div class="input-user-name-order" style="padding-top: 7px; margin-top: 12px;">Orden para el usuario : {{ usuarioName.name }}</div>
-        <button style="font-size: 14px; margin: 2px; margin-left: 110px;" type="submit" class="btn btn-primary" (click)="fetchProducts()">productos permitidos</button>
         <button style="font-size: 14px; margin: 2px;" class="btn btn-primary"  (click)="toggleProductForm()">Registrar Producto</button>
-        <button style="font-size: 14px; margin: 2px;" class="btn btn-primary"  (click)="toggleProductPermisions(); fetchUsers(); fetchProductsPermisions()">Permisos-Productos</button>
+        <button style="font-size: 14px; margin: 2px;" class="btn btn-primary"  (click)="toggleProductPermisions(); fetchUsers(); fetchProductsPermisions()">Permisos Productos</button>
         <button style="font-size: 14px; margin: 2px;" class="btn btn-primary"  (click)="toggleUserReegisterInView()">Registrar ususrios</button>
       </div>
-      <div class="sss" style="margin-top: 80px;">
-        <span id="message-user-order-new" style="margin-right: 245px;">Generar una orden, para otro usuario.</span>
+      <div class="sss" style="margin-top: 50px;">
+        <span id="message-user-order-new" style="margin-left: 40px; margin-right: 250px;">Usuarios disponibles.</span>
         <span id="message-user-order-new">Seleccione los productos y la cantidad a incluir, en la orden.</span>
       </div>
         <div class="fondoOscuro"></div><!--Div para mostrar usuarios para orden-->
@@ -38,7 +37,7 @@
             {{ usseer.name }}
           </li>
         </ul>
-        <ul style="margin-right: 70px; font-size: 15px; max-height: 150px; overflow-y: auto;">
+        <ul style="font-size: 15px; max-height: 150px; overflow-y: auto;">
           <li *ngFor="let productsGenerateOrden of products" style="display: flex; align-items: center; gap: 15px; padding: 5px;">
             <input type="checkbox" (change)="toggleProductSelection(productsGenerateOrden, $event)">
             <p style="margin: 0;">
@@ -147,6 +146,6 @@
     </div>
   </div>
 </div>
-<div class="tainer3" style="border-radius: 10px; background-color: rgb(206, 206, 204); height: 160px; width: 990px; margin-left: 10px">
+<div class="tainer3" style="border-radius: 10px; background-color: rgb(206, 206, 204); height: 160px; width: 940px; margin-left: 10px">
   <h4>Ordenes realizadas.</h4>
 </div>

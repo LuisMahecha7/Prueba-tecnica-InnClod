@@ -15,8 +15,6 @@ INSERT INTO `users` (`name`, `email`, `password`, `role`, `created_at`, `updated
 ('Patricia Mendoza', 'patricia.mendoza@example.com', 'hashed_password_14', 'user', NOW(), NOW()),
 ('Javier Silva', 'javier.silva@example.com', 'hashed_password_15', 'admin', NOW(), NOW());
 
-
-
 INSERT INTO `products` (`name`, `stock`, `price`, `created_at`, `updated_at`) VALUES
 ('Laptop Dell XPS 15', 10, 1500.00, NOW(), NOW()),
 ('iPhone 15 Pro', 20, 1099.99, NOW(), NOW()),
