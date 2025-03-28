@@ -43,12 +43,16 @@ Prueba tecnica InnClod
      - composer install  : instala las dependencias necesarias para la ejecucion del proyecto.
      - php artisan serve : para iniciar el sevicio de backend
 
-     Nota: Como el archivo .env ya se incluye en el proyecto, no requiere de configuración la db. Ademas para la ejecucion del backend,
+     Nota:
+
+     1.  Dede descargar el archivo: db_prueba_InnClod.sql, el cual se encuentra en la carpeta backend, en la ruta base,
+
+     Como el archivo .env ya se incluye en el proyecto, no requiere de configuración la db. Ademas para la ejecucion del backend,
      se requiere haber iniciado el servidor local de apache Xampp e ingresar en el navegador a la ruta: http://localhost/phpmyadmin/
      estando ahi, va ha crear la base de datos con el nombre: db_prueba_InnClod con la configuración: utf8mb4_general_ci,
-     despues seleccione la base de datos creada, y en el menú superior ingresa a la opcion SQL y ahi copia y pega el contenido del archivo: db_prueba_InnClod.sql,
-     el cual se encuentra en la carpeta backend, en la ruta base, por ultimo ejecuta la consulta o control y enter, asi cargara datos en la db.
-     Ahora puede iniciar sesion, con usuarios y productos cargados en la db.
+     despues seleccione la base de datos creada, y en el menú superior ingresa a la opcion Importar y
+     selecciona el archivo que descargo anteriormente(db_prueba_InnClod.sql), por ultimo ejecuta la consulta o control y enter,
+     asi creara el squema y cargara data a la db. Ahora puede iniciar sesion, con usuarios y productos cargados en la db.
 
 
 

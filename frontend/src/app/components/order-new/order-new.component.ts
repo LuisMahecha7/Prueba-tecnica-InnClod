@@ -280,18 +280,18 @@ export class OrderNewComponent {
           quantity: this.ProductsSelctOrderr.map(p => p.quantity || 1)
         };
         this.http.post('http://127.0.0.1:8000/api/OrderDetail', dataDetailOrder)
-          .subscribe({
-            next: (response: any) => {
-              console.log('Detalles guardados:', response);
-              this.message = response.message;
-              setTimeout(() => this.message = '', 3000);
-            },
-            error: (error) => {
-              console.error('Error al guardar detalles:', error);
-              this.message = error.error.message || 'Ocurrió un error';
-              setTimeout(() => this.message = '', 2003);
-            }
-          });
+        .subscribe({
+          next: (response: any) => {
+            console.log('Detalles guardados:', response);
+            this.message = response.message;
+            setTimeout(() => this.message = '', 3000);
+          },
+          error: (error) => {
+            console.error('Error al guardar detalles:', error);
+            this.message = error.error.message || 'Ocurrió un error';
+            setTimeout(() => this.message = '', 2003);
+          }
+        });
       },
       error: (error) => {
         console.error('Error al guardar la orden:', error);
