@@ -203,7 +203,7 @@ export class OrderNewComponent {
     if (product.quantity < 1) {
       console.error('La cantidad no puede ser menor que 1.');
       console.log('this.value', this.value);
-      this.message = 'Seleccione una cantidad valida, la cantidad no puede ser menor que 1.';
+      this.message = 'Seleccione una cantidad valida.';
       setTimeout(() => this.message = '', 2000)
       product.quantity = '';
       return;
@@ -273,33 +273,30 @@ export class OrderNewComponent {
       next: (response: any) => {
         this.order_id = response.order_id;
         this.message = response.message;
-        setTimeout(() => this.message = '', 20000);
-      },
-      error: (error) => {
-        this.message = error.error.message || 'Ocurrió un error';
         setTimeout(() => this.message = '', 2000);
-      }
-    });
-    /*Validate-register-order-details*/
-    const dataDetailOrder = {
-      order_id: this.order_id,
-      product_id: this.ProductsSelctOrderr.map(p => p.id),
-      quantity: this.ProductsSelctOrderr.map(p => p.quantity || 1)
-    };
-    this.http.post('http://127.0.0.1:8000/api/OrderDetail', dataDetailOrder)
-    .subscribe({
-      next: (response: any) => {
-        console.log('this-response', this.order_id);
-        console.log('this-response', this.ProductsSelctOrderr.map(p => p.id));
-        console.log('this-response', this.ProductsSelctOrderr.map(p => p.quantity));
-        console.log('this-response', response);
-        this.message = response.message;
-        setTimeout(() => this.message = '', 3000);
+        const dataDetailOrder = {
+          order_id: this.order_id,
+          product_id: this.ProductsSelctOrderr.map(p => p.id),
+          quantity: this.ProductsSelctOrderr.map(p => p.quantity || 1)
+        };
+        this.http.post('http://127.0.0.1:8000/api/OrderDetail', dataDetailOrder)
+          .subscribe({
+            next: (response: any) => {
+              console.log('Detalles guardados:', response);
+              this.message = response.message;
+              setTimeout(() => this.message = '', 3000);
+            },
+            error: (error) => {
+              console.error('Error al guardar detalles:', error);
+              this.message = error.error.message || 'Ocurrió un error';
+              setTimeout(() => this.message = '', 2003);
+            }
+          });
       },
       error: (error) => {
-        console.log('this-error', error);
-        this.message = error.error.message || 'Ocurrió un error';
-        setTimeout(() => this.message = '', 2003);
+        console.error('Error al guardar la orden:', error);
+        this.message = error.error.message || 'Ocurrió un error'
+        setTimeout(() => this.message = '', 2000);
       }
     });
   }
