@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule] // Importamos HttpClientModule
+  imports: [ReactiveFormsModule, CommonModule, ] // Importamos HttpClientModule
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -40,11 +40,7 @@ export class LoginComponent {
           error: (error) => {
             this.isSuccess = false;
             console.error('Error en el inicio de sesión:', error);
-  
-            // Mostrar el mensaje de error
-            this.message = 'Error. Verifique sus credenciales.';
-  
-            // Limpiar el mensaje después de 3 segundos
+            this.message = 'Error de autenticación, verifique las credenciales.';
             setTimeout(() => {
               this.message = undefined;
             }, 3000);

@@ -31,7 +31,7 @@ export class OrderNewComponent {
   isSuccess: boolean = false;
   product: any  = null;//valida producto seleccionado para guardar la orden.
   value: any ;
-  order_id: any;
+  //order_id: any;
   ngOnInit() {
     this.usuarioName = JSON.parse(localStorage.getItem('usuario') || 'null');//se recupera usuario guardado en el login de localstorage
     this.copyuserName = this.usuarioName;
@@ -179,7 +179,7 @@ export class OrderNewComponent {
       },
       error => console.error('Error al obtener usuarios', error)
     );
-  }
+  };
   //funcion para seleccionar solo un usuario, para restringir productos.
   userSelection(user: any, event: any){
     if(event.target.checked) {
@@ -189,15 +189,6 @@ export class OrderNewComponent {
     }
   }
   //Validar Cantidad('stock) productos seleccionados por user, peticion Orden.
-  //practicar solucionarlo implementando con swith.
-  /*switch (key) {
-    case value:
-
-      break;
-
-    default:
-      break;
-  }*/
   validateQuantity(product: any) {
     console.log('Valor seleccionado por el usuario:', product.quantity);//contiene totl seleccinado x user a nivel de cantida del stock.
     if (product.quantity < 1) {
@@ -271,11 +262,11 @@ export class OrderNewComponent {
     this.http.post('http://localhost:8000/api/orders', dataOrder)
     .subscribe({
       next: (response: any) => {
-        this.order_id = response.order_id;
+       // this.order_id = response.order_id;
         this.message = response.message;
         setTimeout(() => this.message = '', 2000);
         const dataDetailOrder = {
-          order_id: this.order_id,
+          order_id: response.order_id,
           product_id: this.ProductsSelctOrderr.map(p => p.id),
           quantity: this.ProductsSelctOrderr.map(p => p.quantity || 1)
         };
@@ -285,6 +276,23 @@ export class OrderNewComponent {
             console.log('Detalles guardados:', response);
             this.message = response.message;
             setTimeout(() => this.message = '', 3000);
+            const updateStock ={
+              id: dataDetailOrder.product_id,
+              stock: dataDetailOrder.quantity,
+            };
+            console.log('updateStock-Esto-estoy-enviando-a validar', updateStock);
+            this.http.post('http://127.0.0.1:8000/api/products', updateStock)
+            .subscribe({
+              next: (response: any) =>{
+              this.message = response.message;
+              setTimeout(() => this.message = '', 2000)
+              },
+              error: (error) => {
+                console.error('Error al Actualizar stock:', error);
+                this.message = error.error.message || 'Ocurrió un error, al actualizar stock'
+                setTimeout(() => this.message = '', 2000);
+              }
+            });
           },
           error: (error) => {
             console.error('Error al guardar detalles:', error);
@@ -292,7 +300,7 @@ export class OrderNewComponent {
             setTimeout(() => this.message = '', 2003);
           }
         });
-      },
+      },////////Falta acr¿tualizar stock en el back-->
       error: (error) => {
         console.error('Error al guardar la orden:', error);
         this.message = error.error.message || 'Ocurrió un error'

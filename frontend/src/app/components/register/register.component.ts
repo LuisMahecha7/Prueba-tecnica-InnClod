@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient,  } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   standalone: true,
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule]
+  imports: [ReactiveFormsModule, CommonModule]
 })
 export class RegisterComponent {
   registerForm: FormGroup;
